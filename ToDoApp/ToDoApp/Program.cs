@@ -4,15 +4,15 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Willkommen zur ToDo-App!");
+        TodoManager todoManager = new TodoManager();
         bool running = true;
 
         while (running)
         {
-            Console.WriteLine("\nWähle eine Option:");
-            Console.WriteLine("1 - Aufgabe hinzufügen");
-            Console.WriteLine("2 - Aufgaben anzeigen");
-            Console.WriteLine("3 - Beenden");
+            Console.WriteLine("\n Wähle eine Option:");
+            Console.WriteLine("1️ Aufgabe hinzufügen");
+            Console.WriteLine("2️ Aufgaben anzeigen");
+            Console.WriteLine("3️ Beenden");
             Console.Write("Eingabe: ");
 
             string input = Console.ReadLine();
@@ -20,10 +20,12 @@ class Program
             switch (input)
             {
                 case "1":
-                    Console.WriteLine("Funktion zum Hinzufügen wird später implementiert.");
+                    Console.Write("Gib eine neue Aufgabe ein: ");
+                    string task = Console.ReadLine();
+                    todoManager.AddTask(task);
                     break;
                 case "2":
-                    Console.WriteLine("Funktion zum Anzeigen wird später implementiert.");
+                    todoManager.ShowTasks();
                     break;
                 case "3":
                     running = false;
