@@ -1,0 +1,10 @@
+# Visual Studio- und Build-Dateien ignorieren
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pdb
+*.csproj.user
+*.db
