@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-class TodoManager
+namespace ToDoApp
 {
+
     private List<string> tasks;
 
     public TodoManager()
@@ -11,24 +12,41 @@ class TodoManager
     }
 
     public void AddTask(string task)
+
     {
+
         tasks.Add(task);
+
         FileHandler.SaveTasks(tasks); // Speichern nach jeder Änderung
+
         Console.WriteLine($"✅ Aufgabe hinzugefügt: {task}");
     }
 
-    public void ShowTasks()
-    {
-        if (tasks.Count == 0)
+
+        public TodoManager()
         {
+            tasks = FileHandler.LoadTasks(); // Lade gespeicherte Aufgaben beim Start
+        }
+
+        public void AddTask(string task)
+        {
+            tasks.Add(task);
+            FileHandler.SaveTasks(tasks); // Speichern nach jeder Änderung
+            Console.WriteLine($"✅ Aufgabe hinzugefügt: {task}");
+        }
+
+        public void ShowTasks()
+        {
+
             Console.WriteLine("📭 Keine Aufgaben vorhanden.");
             return;
         }
 
         Console.WriteLine("📝 Deine Aufgaben:");
         for (int i = 0; i < tasks.Count; i++)
+
         {
-            Console.WriteLine($"{i + 1}. {tasks[i]}");
+            return tasks.Count;
         }
     }
 
@@ -42,6 +60,8 @@ class TodoManager
 
         Console.WriteLine($"❌ Aufgabe entfernt: {tasks[index - 1]}");
         tasks.RemoveAt(index - 1);
+
         FileHandler.SaveTasks(tasks); // Speichern nach jeder Änderung
+
     }
 }

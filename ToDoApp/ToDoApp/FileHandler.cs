@@ -18,5 +18,6 @@ class FileHandler
             return new List<string>(File.ReadAllLines(filePath));
         }
         return new List<string>(); // Leere Liste, falls Datei nicht existiert
+
     }
 }
