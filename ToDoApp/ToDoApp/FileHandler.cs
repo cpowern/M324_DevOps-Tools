@@ -29,9 +29,6 @@ namespace ToDoApp
             }
         }
 
-        /// <summary>
-        /// Lädt die Aufgabenliste aus der CSV-Datei.
-        /// </summary>
         public static List<string> LoadTasks()
         {
             try
