@@ -1,13 +1,10 @@
 ﻿using System;
 
-class Program
+namespace ToDoApp
 {
-    static void Main()
+    class Program
     {
-        TodoManager todoManager = new TodoManager();
-        bool running = true;
-
-        while (running)
+        static void Main()
         {
             Console.WriteLine("\n📌 Wähle eine Option:");
             Console.WriteLine("1️⃣ Aufgabe hinzufügen");
@@ -18,7 +15,7 @@ class Program
 
             string input = Console.ReadLine();
 
-            switch (input)
+            while (running)
             {
                 case "1":
                     Console.Write("✏ Gib eine neue Aufgabe ein: ");
@@ -45,9 +42,10 @@ class Program
                 default:
                     Console.WriteLine("⚠ Ungültige Eingabe!");
                     break;
+
             }
-        }
 
         Console.WriteLine("👋 Programm beendet.");
+
     }
 }
