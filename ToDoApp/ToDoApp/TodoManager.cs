@@ -3,10 +3,22 @@ using System.Collections.Generic;
 
 namespace ToDoApp
 {
-    public class TodoManager
+
+    private List<string> tasks;
+
+    public TodoManager()
+    {
+        tasks = FileHandler.LoadTasks(); // Lade gespeicherte Aufgaben beim Start
+    }
+
+    public void AddTask(string task)
+
     {
 
         tasks.Add(task);
+
+        FileHandler.SaveTasks(tasks); // Speichern nach jeder Änderung
+
         Console.WriteLine($"✅ Aufgabe hinzugefügt: {task}");
     }
 
@@ -48,5 +60,8 @@ namespace ToDoApp
 
         Console.WriteLine($"❌ Aufgabe entfernt: {tasks[index - 1]}");
         tasks.RemoveAt(index - 1);
+
+        FileHandler.SaveTasks(tasks); // Speichern nach jeder Änderung
+
     }
 }
