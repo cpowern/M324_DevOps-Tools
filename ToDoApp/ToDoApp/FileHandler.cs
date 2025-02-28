@@ -8,6 +8,9 @@ namespace ToDoApp
     {
         private const string filePath = "todo_list.csv";
 
+        /// <summary>
+        /// Speichert die Aufgabenliste in eine CSV-Datei.
+        /// </summary>
         public static void SaveTasks(List<string> tasks)
         {
             try

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App Dokumentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        ul {
+            list-style-type: square;
+        }
+        code {
+            background: #eef;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do App in C#</h1>
+        
+        <h2>Beschreibung</h2>
+        <p>Diese einfache To-Do-App wurde in C# entwickelt und ermöglicht es dem Benutzer, Aufgaben hinzuzufügen und anzuzeigen. Sie läuft in der Konsole und bietet eine minimalistische, aber funktionale Möglichkeit zur Verwaltung von Aufgaben.</p>
+
+        <h2>Funktionen</h2>
+        <ul>
+            <li><strong>Aufgabe hinzufügen:</strong> Der Benutzer kann neue Aufgaben eingeben, die in einer Liste gespeichert werden.</li>
+            <li><strong>Aufgaben anzeigen:</strong> Eine Übersicht der gespeicherten Aufgaben wird ausgegeben.</li>
+            <li><strong>Programm beenden:</strong> Das Programm kann jederzeit über das Menü beendet werden.</li>
+        </ul>
+
+        <h2>Verwendete Technologien</h2>
+        <ul>
+            <li><strong>Programmiersprache:</strong> C#</li>
+            <li><strong>Laufzeitumgebung:</strong> .NET</li>
+            <li><strong>Eingabe/Ausgabe:</strong> Konsolenbasiert</li>
+        </ul>
+
+        <h2>Struktur des Codes</h2>
+        <h3>Program.cs</h3>
+        <p>Die <code>Program</code>-Klasse enthält die Hauptmethode <code>Main()</code>, die eine Instanz von <code>TodoManager</code> erstellt und eine Schleife bereitstellt, um Benutzereingaben zu verarbeiten. Über ein einfaches Menü können verschiedene Optionen gewählt werden.</p>
+
+        <h3>TodoManager.cs</h3>
+        <p>Die <code>TodoManager</code>-Klasse verwaltet die Aufgaben. Sie verwendet eine <code>List&lt;string&gt;</code> zur Speicherung und stellt Methoden bereit, um Aufgaben hinzuzufügen (<code>AddTask()</code>) und anzuzeigen (<code>ShowTasks()</code>).</p>
+
+        <h2>Nutzung</h2>
+        <ol>
+            <li><strong>Starten:</strong> Das Programm in einer C#-fähigen Umgebung kompilieren und ausführen.</li>
+            <li><strong>Option wählen:</strong> Im Konsolenmenü eine Zahl eingeben:
+                <ul>
+                    <li><code>1</code> zum Hinzufügen einer Aufgabe</li>
+                    <li><code>2</code> zum Anzeigen der Aufgabenliste</li>
+                    <li><code>3</code> zum Beenden des Programms</li>
+                </ul>
+            </li>
+            <li><strong>Interagieren:</strong> Aufgaben verwalten, bis das Programm beendet wird.</li>
+        </ol>
+
+        <h2>Mögliche Erweiterungen</h2>
+        <ul>
+            <li><strong>Löschen von Aufgaben:</strong> Eine Funktion zum Entfernen erledigter Aufgaben</li>
+            <li><strong>Speicherung:</strong> Persistente Speicherung der Aufgaben in einer Datei oder Datenbank</li>
+            <li><strong>Grafische Benutzeroberfläche:</strong> Umsetzung als Desktop- oder Web-App für eine verbesserte Nutzererfahrung</li>
+        </ul>
+
+        <h2>Fazit</h2>
+        <p>Diese einfache To-Do-App bietet eine gute Basis für den Einstieg in die C#-Programmierung und kann leicht erweitert werden. Sie ist ideal für kleine persönliche Projekte oder zum Üben der Grundlagen von Objektorientierung und Konsoleninteraktion in C#.</p>
+    </div>
+</body>
+</html>
+
