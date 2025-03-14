@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  todoapp:
+    build: .
+    image: todoapp:latest
+    container_name: todoapp
+    tty: true
+    stdin_open: true

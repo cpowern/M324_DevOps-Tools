@@ -1,4 +1,5 @@
-﻿using ToDoApp;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ToDoApp
 {
@@ -6,46 +7,50 @@ namespace ToDoApp
     {
         static void Main()
         {
-            Console.WriteLine("\n📌 Wähle eine Option:");
-            Console.WriteLine("1️⃣ Aufgabe hinzufügen");
-            Console.WriteLine("2️⃣ Aufgaben anzeigen");
-            Console.WriteLine("3️⃣ Aufgabe löschen");
-            Console.WriteLine("4️⃣ Beenden");
-            Console.Write("🔹 Eingabe: ");
+            TodoManager todoManager = new TodoManager();
 
-            string input = Console.ReadLine();
-
-            while (running)
+            while (true)
             {
-                case "1":
-                    Console.Write("✏ Gib eine neue Aufgabe ein: ");
-                    string task = Console.ReadLine();
-                    todoManager.AddTask(task);
-                    break;
-                case "2":
-                    todoManager.ShowTasks();
-                    break;
-                case "3":
-                    Console.Write("🗑 Welche Aufgabe soll gelöscht werden (Nummer)?: ");
-                    if (int.TryParse(Console.ReadLine(), out int taskNumber))
-                    {
-                        todoManager.DeleteTask(taskNumber);
-                    }
-                    else
-                    {
-                        Console.WriteLine("⚠ Ungültige Eingabe! Bitte eine Zahl eingeben.");
-                    }
-                    break;
-                case "4":
-                    running = false;
-                    break;
-                default:
-                    Console.WriteLine("⚠ Ungültige Eingabe!");
-                    break;
+                Console.WriteLine("\nToDo-Liste: ");
+                Console.WriteLine("1. Aufgabe hinzufügen");
+                Console.WriteLine("2. Aufgabe entfernen");
+                Console.WriteLine("3. Aufgaben anzeigen");
+                Console.WriteLine("4. Beenden");
+                Console.Write("Auswahl: ");
 
+                string choice = Console.ReadLine();
+
+                // WICHTIG: Stelle sicher, dass der Switch-Block korrekt geschrieben ist
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("Neue Aufgabe: ");
+                        string task = Console.ReadLine();
+                        todoManager.AddTask(task);
+                        break;
+                    case "2":
+                        todoManager.ShowTasks();
+                        Console.Write("Nummer der zu löschenden Aufgabe: ");
+                        if (int.TryParse(Console.ReadLine(), out int index))
+                        {
+                            todoManager.DeleteTask(index);
+                        }
+                        else
+                        {
+                            Console.WriteLine("⚠ Ungültige Eingabe!");
+                        }
+                        break;
+                    case "3":
+                        todoManager.ShowTasks();
+                        break;
+                    case "4":
+                        return;
+                    default:
+                        Console.WriteLine("⚠ Ungültige Auswahl!");
+                        break;
+                } 
             }
-
-        Console.WriteLine("👋 Programm beendet.");
+        }
     }
 }
 

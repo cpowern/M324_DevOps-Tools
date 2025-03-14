@@ -3,65 +3,60 @@ using System.Collections.Generic;
 
 namespace ToDoApp
 {
-
-    private List<string> tasks;
-
-    public TodoManager()
+    public class TodoManager
     {
-        tasks = FileHandler.LoadTasks(); // Lade gespeicherte Aufgaben beim Start
-    }
-
-    public void AddTask(string task)
-
-    {
-
-        tasks.Add(task);
-
-        FileHandler.SaveTasks(tasks); // Speichern nach jeder Änderung
-
-        Console.WriteLine($"✅ Aufgabe hinzugefügt: {task}");
-    }
-
+        private List<string> tasks;
 
         public TodoManager()
         {
-            tasks = FileHandler.LoadTasks(); // Lade gespeicherte Aufgaben beim Start
+            tasks = FileHandler.LoadTasks();
         }
 
         public void AddTask(string task)
         {
-            tasks.Add(task);
-            FileHandler.SaveTasks(tasks); // Speichern nach jeder Änderung
-            Console.WriteLine($"✅ Aufgabe hinzugefügt: {task}");
+            if (!string.IsNullOrWhiteSpace(task))
+            {
+                tasks.Add(task);
+                FileHandler.SaveTasks(tasks);
+                Console.WriteLine($"✅ Aufgabe hinzugefügt: {task}");
+            }
+            else
+            {
+                Console.WriteLine("⚠ Ungültige Eingabe: Aufgabe darf nicht leer sein!");
+            }
         }
 
         public void ShowTasks()
         {
+            if (tasks.Count == 0)
+            {
+                Console.WriteLine("📭 Keine Aufgaben vorhanden.");
+                return;
+            }
 
-            Console.WriteLine("📭 Keine Aufgaben vorhanden.");
-            return;
+            Console.WriteLine("📝 Deine Aufgaben:");
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {tasks[i]}");
+            }
         }
 
-        Console.WriteLine("📝 Deine Aufgaben:");
-        for (int i = 0; i < tasks.Count; i++)
+        public void DeleteTask(int index)
+        {
+            if (index < 1 || index > tasks.Count)
+            {
+                Console.WriteLine("⚠ Ungültige Nummer! Bitte eine gültige Aufgaben-ID eingeben.");
+                return;
+            }
 
+            Console.WriteLine($"❌ Aufgabe entfernt: {tasks[index - 1]}");
+            tasks.RemoveAt(index - 1);
+            FileHandler.SaveTasks(tasks);
+        }
+
+        public int GetTaskCount()
         {
             return tasks.Count;
         }
-    }
-
-    public void DeleteTask(int index)
-    {
-        if (index < 1 || index > tasks.Count)
-        {
-            Console.WriteLine("⚠ Ungültige Nummer! Bitte eine gültige Aufgaben-ID eingeben.");
-            return;
-        }
-
-        Console.WriteLine($"❌ Aufgabe entfernt: {tasks[index - 1]}");
-        tasks.RemoveAt(index - 1);
-
-        FileHandler.SaveTasks(tasks); // Speichern nach jeder Änderung
-
     }
 }

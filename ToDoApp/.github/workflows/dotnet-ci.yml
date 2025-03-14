@@ -1,31 +1,23 @@
-name: .NET CI/CD Pipeline
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+name: .NET
+on: [push, pull_request]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: 🔹 Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v3
-
-      - name: 🔹 Setup .NET SDK
+        
+      - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
-
-      - name: 🔹 Restore Dependencies
+          
+      - name: Restore dependencies
         run: dotnet restore
-
-      - name: 🔹 Build Application
-        run: dotnet build --configuration Release --no-restore
-
-      - name: 🔹 Run Tests
-        run: dotnet test --configuration Release --no-build --verbosity normal
+        
+      - name: Build
+        run: dotnet build --no-restore --configuration Debug
+        
+      - name: Test
+        run: dotnet test --no-build --configuration Debug
